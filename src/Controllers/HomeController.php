@@ -1,17 +1,13 @@
 <?php
 namespace App\Controllers;
-use PDO;
-use PDOException;
+
+use GuzzleHttp\Client;
+
 class HomeController {
     public function index() {
-        try {
-            $conn = new PDO("sqlite:" . __DIR__ . '/../../db.sqlite');
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connected successfully";
-        } catch(PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
-        }
+        $client = new Client(['verify'=> false]);
+        $response = $client->get('https://rickandmortyapi.com/api/character/2');
+        $char = json_decode($response->getBody()->getContents());
+        var_dump($char->name);
     }
-
 }

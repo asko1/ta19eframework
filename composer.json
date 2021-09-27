@@ -1,0 +1,17 @@
+{
+    "name": "ta-19e-776/ta19eframework",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Asko",
+            "email": "oneasko@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    }
+}
